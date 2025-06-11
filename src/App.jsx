@@ -11,7 +11,7 @@ const categories = [
 
 const subcategoriesByCategory = {
   "Anschluss - Vorlagen": [
-    { id: 0, title: "1a: Wand: L- und T-Verschraubung", image: "/bilder/kategorie1-unter1.png", link: "https://drive.google.com/file/d/1zJoAm0lAJGApdVlvHhR8clEtK0bCDqYo/view" },
+    { id: 0, title: "Wand: L- und T-Verschraubung", image: "/bilder/kategorie1-unter1.png", link: "https://drive.google.com/file/d/1zJoAm0lAJGApdVlvHhR8clEtK0bCDqYo/view" },
     { id: 1, title: "1b: Detail", image: "https://via.placeholder.com/300x150.png", link: "#" },
     { id: 2, title: "1c: Detail", image: "https://via.placeholder.com/300x150.png", link: "#" },
     { id: 3, title: "1d: Detail", image: "https://via.placeholder.com/300x150.png", link: "#" },
