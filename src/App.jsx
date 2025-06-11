@@ -5,7 +5,7 @@ const categories = [
   "Verbindungsmittel - Nachweise",
   "Querzug / Queranschluss",
   "Haupt-/Nebenträger - Vorlagen",
-  "Kategorie 5",
+  "Sinas Kategeorie",
   "Kategorie 6"
 ];
 
