@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 
+const categoryImages = [
+  "/bilder/kategorie1.png", // Anschluss - Vorlagen
+  "/bilder/kategorie2.png", // Verbindungsmittel - Nachweise
+  "/bilder/kategorie3.png", // Querzug / Queranschluss
+  "/bilder/kategorie4.png", // Haupt-/Nebenträger - Vorlagen
+  "/bilder/kategorie5.png", // Kategorie 5
+  "/bilder/kategorie6.png"  // Kategorie 6
+];
+
 const categories = [
   "Anschluss - Vorlagen",
   "Verbindungsmittel - Nachweise",
@@ -79,7 +88,7 @@ function HomePage({ navigate }) {
         {categories.map((cat, i) => (
           <Tile
             key={i}
-            image={i === 0 ? "/bilder/kategorie1.png" : "https://via.placeholder.com/300x150.png"}
+            image={categoryImages[i] || "https://via.placeholder.com/300x150.png"}
             label={cat}
             onClick={() => navigate(cat)}
           />
