@@ -6,7 +6,7 @@ const categories = [
   "Querzug / Queranschluss",
   "Haupt-/Nebenträger - Vorlagen",
   "Sinas Kategeorie",
-  "Kategorie 6"
+  "Schub und Zug"
 ];
 
 const subcategories = Array.from({ length: 6 }, (_, i) => ({
