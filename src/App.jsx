@@ -9,14 +9,56 @@ const categories = [
   "Schub und Zug"
 ];
 
-const subcategories = Array.from({ length: 6 }, (_, i) => ({
-  id: i,
-  title: i === 0 ? "Wand: L- und T-Verschraubung" : `Details ${i + 1}`,
-  image: i === 0 ? "/bilder/kategorie1-unter1.png" : "https://via.placeholder.com/300x150.png",
-  link: i === 0
-    ? "https://drive.google.com/file/d/1zJoAm0lAJGApdVlvHhR8clEtK0bCDqYo/view?usp=drive_link"
-    : `https://example.com/dokument-${i + 1}`
-}));
+const subcategoriesByCategory = {
+  "Anschluss - Vorlagen": [
+    { id: 0, title: "1a: Wand: L- und T-Verschraubung", image: "/bilder/kategorie1-unter1.png", link: "https://drive.google.com/file/d/1zJoAm0lAJGApdVlvHhR8clEtK0bCDqYo/view" },
+    { id: 1, title: "1b: Detail", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 2, title: "1c: Detail", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 3, title: "1d: Detail", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 4, title: "1e: Detail", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 5, title: "1f: Detail", image: "https://via.placeholder.com/300x150.png", link: "#" },
+  ],
+  "Verbindungsmittel - Nachweise": [
+    { id: 0, title: "2a: Nachweis A", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 1, title: "2b: Nachweis B", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 2, title: "2c: Nachweis C", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 3, title: "2d: Nachweis D", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 4, title: "2e: Nachweis E", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 5, title: "2f: Nachweis F", image: "https://via.placeholder.com/300x150.png", link: "#" },
+  ],
+  "Querzug / Queranschluss": [
+    { id: 0, title: "3a: Queranschluss A", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 1, title: "3b: Queranschluss B", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 2, title: "3c: Queranschluss C", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 3, title: "3d: Queranschluss D", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 4, title: "3e: Queranschluss E", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 5, title: "3f: Queranschluss F", image: "https://via.placeholder.com/300x150.png", link: "#" },
+  ],
+  "Haupt-/Nebenträger - Vorlagen": [
+    { id: 0, title: "4a: Träger A", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 1, title: "4b: Träger B", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 2, title: "4c: Träger C", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 3, title: "4d: Träger D", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 4, title: "4e: Träger E", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 5, title: "4f: Träger F", image: "https://via.placeholder.com/300x150.png", link: "#" },
+  ],
+  "Sinas Kategeorie": [
+    { id: 0, title: "5a: Thema A", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 1, title: "5b: Thema B", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 2, title: "5c: Thema C", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 3, title: "5d: Thema D", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 4, title: "5e: Thema E", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 5, title: "5f: Thema F", image: "https://via.placeholder.com/300x150.png", link: "#" },
+  ],
+  "Schub und Zug": [
+    { id: 0, title: "6a: Schub A", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 1, title: "6b: Schub B", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 2, title: "6c: Schub C", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 3, title: "6d: Schub D", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 4, title: "6e: Schub E", image: "https://via.placeholder.com/300x150.png", link: "#" },
+    { id: 5, title: "6f: Schub F", image: "https://via.placeholder.com/300x150.png", link: "#" },
+  ]
+};
 
 function Tile({ image, label, onClick }) {
   return (
@@ -48,6 +90,8 @@ function HomePage({ navigate }) {
 }
 
 function CategoryPage({ category, goBack }) {
+  const subcategories = subcategoriesByCategory[category] || [];
+
   return (
     <div className="bg-white min-h-screen p-8 pt-32">
       <div className="max-w-6xl mx-auto">
